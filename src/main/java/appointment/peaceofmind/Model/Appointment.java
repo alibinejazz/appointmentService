@@ -24,6 +24,10 @@ import lombok.Setter;
 @Table(name="appointment")
 public class Appointment {
     
+    public Appointment(long id2, String string, String string2, long availability_id2, long patient_id2,
+            boolean is_confirmed2, Object is_deleted2) {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -39,4 +43,9 @@ public class Appointment {
     private Long patient_id;
 
     private boolean is_confirmed;
+
+    private Integer is_deleted;
+
+    // public Boolean get_isConfirmed()
+    // }
 }

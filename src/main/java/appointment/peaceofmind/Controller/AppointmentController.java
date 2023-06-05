@@ -1,6 +1,7 @@
 package appointment.peaceofmind.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import appointment.peaceofmind.Model.Appointment;
+import appointment.peaceofmind.Repository.AppointmentRepository;
 import appointment.peaceofmind.Service.AppointmentService;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,10 +56,6 @@ public class AppointmentController {
     public ResponseEntity<String> updateAppointment(@RequestBody Appointment appointment,@PathVariable Long id) {
         String appointment2 = appointmentService.updateAppointment(appointment, id);
         return ResponseEntity.ok().body(appointment2);
-    }
+    }  
 
-
-
-
-    
 }
