@@ -3,6 +3,7 @@ package appointment.peaceofmind.Service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,42 +24,29 @@ public class AppointmentService implements IAppointmentRepo  {
         Optional<Appointment> tobedel = appointmentRepo.findById(id);
         if(tobedel.isPresent()){
             appointmentRepo.deleteById(id);
-            return "Appointment deleted !";
+            return "Appointment deleted";
         }else{
             return "No appointments exist";
         }
     }
 
     @Override
-    public String updateAppointment(Appointment appointment, Long id) {
-        Optional<Appointment> tobeupd = appointmentRepo.findById(id);
-        Appointment appointment2 = tobeupd.get();
-        if(!tobeupd.isEmpty()){
-            appointment2.setPatient_id(appointment.getPatient_id());
-            appointment2.setUpdated(Date.valueOf(LocalDate.now()));
-            appointment2.setAvailability_id(appointment.getAvailability_id());
-            System.out.println(appointment.is_confirmed());
-            appointment2.set_confirmed(appointment.is_confirmed());
-            appointmentRepo.save(appointment2);
+    public String updateAppointment(Appointment appointment) {
+        Appointment toBeUpdated = appointmentRepo.findById(appointment.getId()).orElse(null);
+
+        if(!Objects.isNull(toBeUpdated)){
+            toBeUpdated.setPatient_id(appointment.getPatient_id());
+            toBeUpdated.setUpdated(Date.valueOf(LocalDate.now()));
+            toBeUpdated.setAvailability_id(appointment.getAvailability_id());
+            toBeUpdated.setConfirmed(appointment.isConfirmed());
+            
+            appointmentRepo.save(toBeUpdated);
             return "Appointment Updated !";
-                }
-        else{
-            return "No appointments exist";
+
+            }else{
+                return "No appointments exist";
             }
     }
-
-//     @Override
-// public String updateAppointment(Appointment appointment, Long id) {
-//     Optional<Appointment> tobeupd = appointmentRepo.findById(id);
-//     if (tobeupd.isPresent()) {
-//         Appointment appointment2 = tobeupd.get();
-//         appointment2.setUpdated(appointment.getUpdated());
-//         appointmentRepo.save(appointment2);
-//         return "Appointment Updated";
-//     } else {
-//         return "No appointments exist";
-//     }
-// }
 
 
     @Override
@@ -75,8 +63,9 @@ public class AppointmentService implements IAppointmentRepo  {
 
     @Override
     public Appointment getAppointment(Long id) {
-        Optional<Appointment> getAppointment = appointmentRepo.findById(id);
-        return getAppointment.get();
+        Appointment getAppointment = appointmentRepo.findById(id).orElse(null);
+
+        return getAppointment;
     }
     
 }
