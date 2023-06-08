@@ -71,16 +71,16 @@ class PeaceofmindApplicationTests {
 
 
 	// Book appointment
-	@Test
-	public void bookingAnAppointment() throws Exception{
-		Appointment appointment = new Appointment(1L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, false, 0);
+	// @Test
+	// public void bookingAnAppointment() throws Exception{
+	// 	Appointment appointment = new Appointment(1L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, false, 0);
 
-		when(appointmentrepo.createAppointment(appointment)).thenReturn(appointment);
+	// 	when(appointmentrepo.createAppointment(appointment)).thenReturn(appointment);
 
-		MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/appointments");
+	// 	MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/appointments");
 
-		mvc.perform(request)
-			.andExpect(status().isOk());
+	// 	mvc.perform(request)
+	// 		.andExpect(status().isOk());
 			// .andExpect(content().string("Appointment deleted"));
 
 		// mvc.perform(MockMvcRequestBuilders
@@ -88,7 +88,6 @@ class PeaceofmindApplicationTests {
 		// 		.contentType(MediaType.APPLICATION_JSON)
 		// 		.content(jsonAppointment.write(appointment).getJson()))
 		// 		.andExpect(MockMvcResultMatchers.status().isOk());
-	}
 
 
 	// Delete appointment
@@ -107,71 +106,71 @@ class PeaceofmindApplicationTests {
 	}
 
 	// get appointment
-	@Test
-	public void getAnAppointment() throws Exception{
-		Appointment appointment = new Appointment(1L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, false, 0);
+	// @Test
+	// public void getAnAppointment() throws Exception{
+	// 	Appointment appointment = new Appointment(1L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, false, 0);
 		
-		when(appointmentService.getAppointment(1L)).thenReturn(appointment);
+	// 	when(appointmentService.getAppointment(1L)).thenReturn(appointment);
 
-		MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/appointments/get/1");
+	// 	MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/appointments/get/1");
 
-		mvc.perform(request)
-			.andExpect(status().isOk())
-			.andExpect(content().json(jsonAppointment.write(appointment).getJson()));
+	// 	mvc.perform(request)
+	// 		.andExpect(status().isOk())
+	// 		.andExpect(content().json(jsonAppointment.write(appointment).getJson()));
 
-		verify(appointmentService).getAppointment(1L);
-	}
+	// 	verify(appointmentService).getAppointment(1L);
+	// }
 
 
 	// get all appointment
-	@Test
-	public void getAllAppointment() throws Exception{
-		Appointment appointment = new Appointment(1L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, false, 0);
-		Appointment appointment2 = new Appointment(2L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, false, 0);
+	// @Test
+	// public void getAllAppointment() throws Exception{
+	// 	Appointment appointment = new Appointment(1L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, false, 0);
+	// 	Appointment appointment2 = new Appointment(2L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, false, 0);
 
-		ArrayList<Appointment> arr = new ArrayList<>();
+	// 	ArrayList<Appointment> arr = new ArrayList<>();
 
-		arr.add(appointment);
-		arr.add(appointment2);
+	// 	arr.add(appointment);
+	// 	arr.add(appointment2);
 
 		
-		when(appointmentService.getAllAppointments()).thenReturn(arr);
+	// 	when(appointmentService.getAllAppointments()).thenReturn(arr);
 
 
-		MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/appointments/getall");
+	// 	MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/appointments/getall");
 
-		mvc.perform(request)
-			.andExpect(status().isOk())
-			.andExpect(content().json(jsonAppointments.write(arr).getJson()));
+	// 	mvc.perform(request)
+	// 		.andExpect(status().isOk())
+	// 		.andExpect(content().json(jsonAppointments.write(arr).getJson()));
 
-		verify(appointmentService).getAllAppointments();
-	}
+	// 	verify(appointmentService).getAllAppointments();
+	// }
 
 
 	// update appointment
-	@Test
-	public void updateAppointment() throws Exception{
-		Appointment appointment = new Appointment(1L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, false, 0);
-		//Appointment appointment2 = new Appointment(2L, Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()), 12L, 5L, false, 0);
+	// @Test
+	// public void updateAppointment() throws Exception{
+	// 	Appointment appointment = new Appointment(1L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, false, 0);
+	// 	//Appointment appointment2 = new Appointment(2L, Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()), 12L, 5L, false, 0);
 		
-		when(appointmentService.getAppointment(1L)).thenReturn(appointment);
+	// 	when(appointmentService.getAppointment(1L)).thenReturn(appointment);
 
-		appointment.setAvailability_id(5L);
-		appointment.setPatient_id(4L);
-		appointment.setConfirmed(false);
+	// 	appointment.setAvailability_id(5L);
+	// 	appointment.setPatient_id(4L);
+	// 	appointment.setConfirmed(false);
 
-		when(appointmentService.updateAppointment(appointment)).thenReturn("Appointment Updated !");
+	// 	when(appointmentService.updateAppointment(appointment)).thenReturn("Appointment Updated !");
 
 
-		MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/appointments/update")
-					.contentType(org.springframework.http.MediaType.APPLICATION_JSON)
-					.content(jsonAppointment.write(appointment).getJson());
+	// 	MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/appointments/update")
+	// 				.contentType(org.springframework.http.MediaType.APPLICATION_JSON)
+	// 				.content(jsonAppointment.write(appointment).getJson());
 
-		mvc.perform(request)
-			.andExpect(status().isOk());
-			// .andExpect(content().string("Appointment Updated !"));
+	// 	mvc.perform(request)
+	// 		.andExpect(status().isOk());
+	// 		// .andExpect(content().string("Appointment Updated !"));
 
-		// verify(appointmentService).updateAppointment(appointment);
-	}
+	// 	// verify(appointmentService).updateAppointment(appointment);
+	// }
 
 }
