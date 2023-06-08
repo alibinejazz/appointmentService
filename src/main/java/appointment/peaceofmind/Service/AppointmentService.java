@@ -1,10 +1,14 @@
 package appointment.peaceofmind.Service;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +40,7 @@ public class AppointmentService implements IAppointmentRepo  {
 
         if(!Objects.isNull(toBeUpdated)){
             toBeUpdated.setPatient_id(appointment.getPatient_id());
-            toBeUpdated.setUpdated(Date.valueOf(LocalDate.now()));
+            toBeUpdated.setUpdated(ZonedDateTime.now( ZoneOffset.UTC ));
             toBeUpdated.setAvailability_id(appointment.getAvailability_id());
             toBeUpdated.setConfirmed(appointment.isConfirmed());
             
@@ -51,8 +55,8 @@ public class AppointmentService implements IAppointmentRepo  {
 
     @Override
     public Appointment createAppointment(Appointment appointment){
-        appointment.setCreated(Date.valueOf(LocalDate.now()));
-        appointment.setUpdated(Date.valueOf(LocalDate.now()));
+        appointment.setCreated(ZonedDateTime.now( ZoneOffset.UTC ));
+        appointment.setUpdated(ZonedDateTime.now( ZoneOffset.UTC ));
         return appointmentRepo.save(appointment);
     }
 
