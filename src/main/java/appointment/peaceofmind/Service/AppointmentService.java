@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import appointment.peaceofmind.Model.Appointment;
@@ -18,6 +19,8 @@ public class AppointmentService implements IAppointmentRepo  {
 
     @Autowired
     private AppointmentRepository appointmentRepo; 
+
+   
 
     @Override
     public String deleteAppointment(Long id) {
@@ -37,7 +40,7 @@ public class AppointmentService implements IAppointmentRepo  {
         if(!Objects.isNull(toBeUpdated)){
             toBeUpdated.setPatient_id(appointment.getPatient_id());
             toBeUpdated.setUpdated(Date.valueOf(LocalDate.now()));
-            toBeUpdated.setAvailability_id(appointment.getAvailability_id());
+            toBeUpdated.setAvailabilityId(appointment.getAvailabilityId());
             toBeUpdated.setConfirmed(appointment.isConfirmed());
             
             appointmentRepo.save(toBeUpdated);
@@ -66,6 +69,12 @@ public class AppointmentService implements IAppointmentRepo  {
         Appointment getAppointment = appointmentRepo.findById(id).orElse(null);
 
         return getAppointment;
+    }
+
+    
+    @Override
+    public List<Appointment> findByAvailabilityId(Long availabilityId) {
+        return appointmentRepo.findByAvailabilityId(availabilityId);
     }
     
 }

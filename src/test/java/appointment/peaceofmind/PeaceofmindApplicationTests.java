@@ -1,5 +1,8 @@
 package appointment.peaceofmind;
 
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,13 +27,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-
 import appointment.peaceofmind.Controller.AppointmentController;
 import appointment.peaceofmind.Model.Appointment;
-import appointment.peaceofmind.Repository.AppointmentRepository;
 import appointment.peaceofmind.Repository.IAppointmentRepo;
 import appointment.peaceofmind.Service.AppointmentService;
 
@@ -144,7 +142,7 @@ class PeaceofmindApplicationTests {
 		
 		when(appointmentService.getAppointment(1L)).thenReturn(appointment);
 
-		appointment.setAvailability_id(5L);
+		appointment.setAvailabilityId(5L);
 		appointment.setPatient_id(4L);
 		appointment.setConfirmed(false);
 

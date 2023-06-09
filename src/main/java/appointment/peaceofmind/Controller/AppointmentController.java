@@ -1,5 +1,6 @@
 package appointment.peaceofmind.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,14 +9,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import appointment.peaceofmind.Model.Appointment;
+import appointment.peaceofmind.Repository.IAppointmentRepo;
 import appointment.peaceofmind.Service.AppointmentService;
-
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RequestMapping("/appointments")
@@ -24,6 +24,9 @@ public class AppointmentController {
 
     @Autowired
     private AppointmentService appointmentService;
+
+    @Autowired
+    private IAppointmentRepo iAppointmentRepo;
 
     @PostMapping(value="")
     public ResponseEntity<Appointment> postAppointment(@RequestBody Appointment appointment) {
@@ -62,5 +65,18 @@ public class AppointmentController {
         String appointment2 = appointmentService.updateAppointment(appointment);
         return ResponseEntity.ok().body(appointment2);
     }  
+
+    
+
+    @GetMapping(value = "/getByAvail/{availabilityId}")
+public List<Appointment> findByAvailabilityId(@PathVariable("availabilityId") Long availabilityId) {
+    List<Appointment> appointments = appointmentService.findByAvailabilityId(availabilityId);
+    if (!appointments.isEmpty()) {
+        return appointments;
+    } else {
+        return new ArrayList<>(); 
+    }
+}
+
 
 }

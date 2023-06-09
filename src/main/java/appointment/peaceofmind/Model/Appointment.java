@@ -3,10 +3,8 @@ package appointment.peaceofmind.Model;
 import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.core.sym.Name;
 
 import jakarta.annotation.Nonnull;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,8 +34,8 @@ public class Appointment {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date updated;
 
-    @Nonnull
-    private Long availability_id;
+    // @Nonnull
+    private Long availabilityId;
 
     @Nonnull
     private Long patient_id;
@@ -45,5 +43,8 @@ public class Appointment {
     private boolean confirmed;
 
     private Integer deleted;
-    
+
+   
+
+   
 }
