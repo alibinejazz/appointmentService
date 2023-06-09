@@ -58,6 +58,7 @@ public class AppointmentController {
 
     }
 
+
     @PostMapping(value="/update")
     public ResponseEntity<String> updateAppointment(@RequestBody Appointment appointment) {
         String appointment2 = appointmentService.updateAppointment(appointment);
