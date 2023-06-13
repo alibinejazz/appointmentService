@@ -28,6 +28,7 @@ public class AppointmentController {
 
     @PostMapping(value="")
     public ResponseEntity<Appointment> postAppointment(@RequestBody Appointment appointment) {
+
         Appointment appointment2 = appointmentService.createAppointment(appointment);
 
         return ResponseEntity.ok().body(appointment2);
@@ -64,5 +65,10 @@ public class AppointmentController {
         String appointment2 = appointmentService.updateAppointment(appointment);
         return ResponseEntity.ok().body(appointment2);
     }  
+
+    @DeleteMapping(value = "/deletedAll")
+    public String deleteAll(){
+        return appointmentService.deleteAllAppointments();
+    }
 
 }

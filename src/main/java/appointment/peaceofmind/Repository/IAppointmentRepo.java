@@ -15,5 +15,5 @@ public interface IAppointmentRepo {
     public List<Appointment> getAllAppointments();
     public Appointment getAppointment(Long id);
     public Appointment createAppointment(Appointment appointment);
-
+    public String deleteAllAppointments();
 }

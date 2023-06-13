@@ -72,6 +72,17 @@ public class AppointmentService implements IAppointmentRepo  {
         return getAppointment;
     }
 
+    @Override
+    public String deleteAllAppointments(){
+        List<Appointment> delall = appointmentRepo.findAll();
+        if(!delall.isEmpty()){
+            appointmentRepo.deleteAll();
+            return "Deleted All Appointments !";
+        }
+        else{
+            return "No appointment exists";
+        }
+    }
     
     
 }
