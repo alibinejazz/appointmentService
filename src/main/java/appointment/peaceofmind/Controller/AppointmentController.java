@@ -79,4 +79,14 @@ public List<Appointment> findByAvailabilityId(@PathVariable("availabilityId") Lo
 }
 
 
+@GetMapping(value = "/getByPatientid/{patientid}")
+public List<Appointment> findBypatientid(@PathVariable("patientid") Long patientid) {
+    List<Appointment> appointments = appointmentService.findBypatientid(patientid);
+    if (!appointments.isEmpty()) {
+        return appointments;
+    } else {
+        return new ArrayList<>(); 
+    }
+}
+
 }

@@ -19,6 +19,8 @@ public interface IAppointmentRepo {
 
     
      public List<Appointment> findByAvailabilityId(Long availability_id);
+
+     public List<Appointment> findBypatientid(Long patientid);
     }
     
 
