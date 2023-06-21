@@ -1,0 +1,91 @@
+# Appointment Service
+
+The Appointment Service is a RESTful API that allows users to manage appointments. It provides endpoints for creating, retrieving, updating, and deleting appointments.
+
+## Endpoints
+
+### Create an Appointment
+
+**URL**: `/appointments`
+
+**Method**: POST
+
+**Request Body**: JSON object representing the appointment details.
+
+**Response**: Returns the created appointment object.
+
+### Get All Appointments
+
+**URL**: `/appointments/getall`
+
+**Method**: GET
+
+**Response**: Returns a list of all appointments.
+
+### Get an Appointment
+
+**URL**: `/appointments/get/{id}`
+
+**Method**: GET
+
+**Path Variable**: `id` - The ID of the appointment to retrieve.
+
+**Response**: Returns the appointment object with the specified ID.
+
+### Delete an Appointment
+
+**URL**: `/appointments/delete/{id}`
+
+**Method**: DELETE
+
+**Path Variable**: `id` - The ID of the appointment to delete.
+
+**Response**: Returns a message indicating the success of the deletion.
+
+### Update an Appointment
+
+**URL**: `/appointments/update`
+
+**Method**: POST
+
+**Request Body**: JSON object representing the updated appointment details.
+
+**Response**: Returns a message indicating the success of the update.
+
+### Delete All Appointments
+
+**URL**: `/appointments/deletedAll`
+
+**Method**: DELETE
+
+**Response**: Returns a message indicating the success of deleting all appointments.
+
+## Cross-Origin Resource Sharing (CORS)
+
+The service is configured to allow cross-origin requests from any origin (`*`).
+
+## How to Use
+
+You can interact with the Appointment Service by sending HTTP requests to the provided endpoints using a tool of your choice, such as cURL or Postman.
+
+Ensure that you have the service running and replace `{base_url}` in the endpoint URLs with the actual base URL of the service.
+
+For example, to create a new appointment, send a POST request to `{base_url}/appointments` with the appointment details in the request body.
+
+## Dependencies
+
+The Appointment Service uses the following dependencies:
+
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+
+Please ensure that you have these dependencies available when running the service.
+
+## Contributions
+
+Contributions to the Appointment Service are welcome. If you find any issues or would like to add new features, please submit a pull request or open an issue in the project repository.
+
+## License
+
+The Appointment Service is released under the MIT License. See the [LICENSE](link-to-license-file) file for more details.
