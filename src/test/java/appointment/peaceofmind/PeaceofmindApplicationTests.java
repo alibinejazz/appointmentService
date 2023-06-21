@@ -1,5 +1,8 @@
 package appointment.peaceofmind;
 
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
@@ -28,13 +31,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-
 import appointment.peaceofmind.Controller.AppointmentController;
 import appointment.peaceofmind.Model.Appointment;
-import appointment.peaceofmind.Repository.AppointmentRepository;
 import appointment.peaceofmind.Repository.IAppointmentRepo;
 import appointment.peaceofmind.Service.AppointmentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -143,8 +141,19 @@ class PeaceofmindApplicationTests {
 	// update appointment
 	@Test
 	public void updateAppointment() throws Exception{
+<<<<<<< HEAD
 		ZonedDateTime now = ZonedDateTime.now();
 		Appointment appointment = new Appointment(1L, now, now, 1L, 1L, false, 0);
+=======
+		Appointment appointment = new Appointment(1L, Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()), 12L, 5L, false, 0);
+		//Appointment appointment2 = new Appointment(2L, Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()), 12L, 5L, false, 0);
+		
+		when(appointmentService.getAppointment(1L)).thenReturn(appointment);
+
+		appointment.setAvailabilityId(5L);
+		appointment.setPatientid(4L);
+		appointment.setConfirmed(false);
+>>>>>>> atiquePatient
 
 		when(appointmentService.updateAppointment(appointment)).thenReturn("Appointment Updated !");
 		mvc.perform(MockMvcRequestBuilders

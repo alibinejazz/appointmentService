@@ -4,10 +4,8 @@ import java.sql.Date;
 import java.time.ZonedDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.core.sym.Name;
 
 import jakarta.annotation.Nonnull;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,14 +35,17 @@ public class Appointment {
     //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd - HH:mm:ss")
     private ZonedDateTime updated;
 
-    @Nonnull
-    private Long availability_id;
+    // @Nonnull
+    private Long availabilityId;
 
-    @Nonnull
-    private Long patient_id;
+    //@Nonnull
+    private Long patientid;
 
     private boolean confirmed;
 
     private Integer deleted;
-    
+
+   
+
+   
 }
