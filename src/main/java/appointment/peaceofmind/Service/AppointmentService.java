@@ -91,8 +91,8 @@ public class AppointmentService implements IAppointmentRepo  {
     public List<Appointment> findByAvailabilityId(Long availabilityId) {
         return appointmentRepo.findByAvailabilityId(availabilityId);
     }
-    
-    @Override
+
+     @Override
     public List<Appointment> findBypatientid(Long patientid) {
         return appointmentRepo.findBypatientid(patientid);
     }
