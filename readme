@@ -1,91 +1,77 @@
-# Appointment Service
-
+Appointment Service
 The Appointment Service is a RESTful API that allows users to manage appointments. It provides endpoints for creating, retrieving, updating, and deleting appointments.
 
-## Endpoints
+Endpoints
+Create an Appointment
+URL: /appointments
 
-### Create an Appointment
+Method: POST
 
-**URL**: `/appointments`
+Request Body: JSON object representing the appointment details.
 
-**Method**: POST
+Response: Returns the created appointment object.
 
-**Request Body**: JSON object representing the appointment details.
+Get All Appointments
+URL: /appointments/getall
 
-**Response**: Returns the created appointment object.
+Method: GET
 
-### Get All Appointments
+Response: Returns a list of all appointments.
 
-**URL**: `/appointments/getall`
+Get an Appointment
+URL: /appointments/get/{id}
 
-**Method**: GET
+Method: GET
 
-**Response**: Returns a list of all appointments.
+Path Variable: id - The ID of the appointment to retrieve.
 
-### Get an Appointment
+Response: Returns the appointment object with the specified ID.
 
-**URL**: `/appointments/get/{id}`
+Delete an Appointment
+URL: /appointments/delete/{id}
 
-**Method**: GET
+Method: DELETE
 
-**Path Variable**: `id` - The ID of the appointment to retrieve.
+Path Variable: id - The ID of the appointment to delete.
 
-**Response**: Returns the appointment object with the specified ID.
+Response: Returns a message indicating the success of the deletion.
 
-### Delete an Appointment
+Update an Appointment
+URL: /appointments/update
 
-**URL**: `/appointments/delete/{id}`
+Method: POST
 
-**Method**: DELETE
+Request Body: JSON object representing the updated appointment details.
 
-**Path Variable**: `id` - The ID of the appointment to delete.
+Response: Returns a message indicating the success of the update.
 
-**Response**: Returns a message indicating the success of the deletion.
+Delete All Appointments
+URL: /appointments/deletedAll
 
-### Update an Appointment
+Method: DELETE
 
-**URL**: `/appointments/update`
+Response: Returns a message indicating the success of deleting all appointments.
 
-**Method**: POST
+Cross-Origin Resource Sharing (CORS)
+The service is configured to allow cross-origin requests from any origin (*).
 
-**Request Body**: JSON object representing the updated appointment details.
-
-**Response**: Returns a message indicating the success of the update.
-
-### Delete All Appointments
-
-**URL**: `/appointments/deletedAll`
-
-**Method**: DELETE
-
-**Response**: Returns a message indicating the success of deleting all appointments.
-
-## Cross-Origin Resource Sharing (CORS)
-
-The service is configured to allow cross-origin requests from any origin (`*`).
-
-## How to Use
-
+How to Use
 You can interact with the Appointment Service by sending HTTP requests to the provided endpoints using a tool of your choice, such as cURL or Postman.
 
-Ensure that you have the service running and replace `{base_url}` in the endpoint URLs with the actual base URL of the service.
+Ensure that you have the service running and replace {base_url} in the endpoint URLs with the actual base URL of the service.
 
-For example, to create a new appointment, send a POST request to `{base_url}/appointments` with the appointment details in the request body.
+For example, to create a new appointment, send a POST request to {base_url}/appointments with the appointment details in the request body.
 
-## Dependencies
-
+Dependencies
 The Appointment Service uses the following dependencies:
 
-- Spring Boot
-- Spring Web
-- Spring Data JPA
-
+Spring Boot
+Spring Web
+Spring Data JPA
 Please ensure that you have these dependencies available when running the service.
 
-## Contributions
-
+Contributions
 Contributions to the Appointment Service are welcome. If you find any issues or would like to add new features, please submit a pull request or open an issue in the project repository.
 
-## License
-
-The Appointment Service is released under the MIT License. See the [LICENSE](link-to-license-file) file for more details.
+License
+The Appointment Service is released under the MIT License. See the LICENSE file for more details.
