@@ -141,19 +141,8 @@ class PeaceofmindApplicationTests {
 	// update appointment
 	@Test
 	public void updateAppointment() throws Exception{
-<<<<<<< HEAD
 		ZonedDateTime now = ZonedDateTime.now();
 		Appointment appointment = new Appointment(1L, now, now, 1L, 1L, false, 0);
-=======
-		Appointment appointment = new Appointment(1L, Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()), 12L, 5L, false, 0);
-		//Appointment appointment2 = new Appointment(2L, Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()), 12L, 5L, false, 0);
-		
-		when(appointmentService.getAppointment(1L)).thenReturn(appointment);
-
-		appointment.setAvailabilityId(5L);
-		appointment.setPatientid(4L);
-		appointment.setConfirmed(false);
->>>>>>> atiquePatient
 
 		when(appointmentService.updateAppointment(appointment)).thenReturn("Appointment Updated !");
 		mvc.perform(MockMvcRequestBuilders

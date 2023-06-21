@@ -41,15 +41,9 @@ public class AppointmentService implements IAppointmentRepo  {
         Appointment toBeUpdated = appointmentRepo.findById(appointment.getId()).orElse(null);
 
         if(!Objects.isNull(toBeUpdated)){
-<<<<<<< HEAD
-            toBeUpdated.setPatient_id(appointment.getPatient_id());
-            toBeUpdated.setUpdated(ZonedDateTime.now( ZoneOffset.UTC ));
-            toBeUpdated.setAvailability_id(appointment.getAvailability_id());
-=======
             toBeUpdated.setPatientid(appointment.getPatientid());
-            toBeUpdated.setUpdated(Date.valueOf(LocalDate.now()));
+            toBeUpdated.setUpdated(ZonedDateTime.now());
             toBeUpdated.setAvailabilityId(appointment.getAvailabilityId());
->>>>>>> atiquePatient
             toBeUpdated.setConfirmed(appointment.isConfirmed());
             
             appointmentRepo.save(toBeUpdated);
@@ -80,7 +74,6 @@ public class AppointmentService implements IAppointmentRepo  {
         return getAppointment;
     }
 
-<<<<<<< HEAD
     @Override
     public String deleteAllAppointments(){
         List<Appointment> delall = appointmentRepo.findAll();
@@ -93,8 +86,6 @@ public class AppointmentService implements IAppointmentRepo  {
         }
     }
     
-=======
->>>>>>> atiquePatient
     
     @Override
     public List<Appointment> findByAvailabilityId(Long availabilityId) {
