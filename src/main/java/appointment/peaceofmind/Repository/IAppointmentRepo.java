@@ -2,7 +2,6 @@ package appointment.peaceofmind.Repository;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import appointment.peaceofmind.Model.Appointment;
@@ -19,6 +18,7 @@ public interface IAppointmentRepo {
 
     
      public List<Appointment> findByAvailabilityId(Long availability_id);
+     public List<Appointment> findBypatientid(Long patientid);
     }
     
 

@@ -69,8 +69,18 @@ public class AppointmentController {
     
 
     @GetMapping(value = "/getByAvail/{availabilityId}")
-public List<Appointment> findByAvailabilityId(@PathVariable("availabilityId") Long availabilityId) {
+    public List<Appointment> findByAvailabilityId(@PathVariable("availabilityId") Long availabilityId) {
     List<Appointment> appointments = appointmentService.findByAvailabilityId(availabilityId);
+    if (!appointments.isEmpty()) {
+        return appointments;
+    } else {
+        return new ArrayList<>(); 
+    }
+}
+
+    @GetMapping(value = "/getByPatientid/{patientid}")
+    public List<Appointment> findBypatientid(@PathVariable("patientid") Long patientid) {
+    List<Appointment> appointments = appointmentService.findBypatientid(patientid);
     if (!appointments.isEmpty()) {
         return appointments;
     } else {

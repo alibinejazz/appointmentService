@@ -38,7 +38,7 @@ public class Appointment {
     private Long availabilityId;
 
     @Nonnull
-    private Long patient_id;
+    private Long patientid;
 
     private boolean confirmed;
 

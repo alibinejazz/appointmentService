@@ -143,7 +143,7 @@ class PeaceofmindApplicationTests {
 		when(appointmentService.getAppointment(1L)).thenReturn(appointment);
 
 		appointment.setAvailabilityId(5L);
-		appointment.setPatient_id(4L);
+		appointment.setPatientid(4L);
 		appointment.setConfirmed(false);
 
 		when(appointmentService.updateAppointment(appointment)).thenReturn("Appointment Updated !");
