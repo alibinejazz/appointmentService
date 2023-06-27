@@ -74,7 +74,7 @@ class PeaceofmindApplicationTests {
 	@Test
 	public void bookingAnAppointment() throws Exception{
 		ZonedDateTime now = ZonedDateTime.now();
-		Appointment appointment = new Appointment(1L, now, now, 1L, 1L, false, 0);
+		Appointment appointment = new Appointment(1L, now, now, 1L, 1L, null, false, 0);
 
 		when(appointmentrepo.createAppointment(appointment)).thenReturn(appointment);
 
@@ -90,7 +90,7 @@ class PeaceofmindApplicationTests {
 	// Delete appointment
 	@Test
 	public void deleteAnAppointment() throws Exception{
-		Appointment appointment = new Appointment(1L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, false, 0);
+		Appointment appointment = new Appointment(1L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, null, false, 0);
 
 		when(appointmentService.deleteAppointment(appointment.getId())).thenReturn("Appointment deleted");
 
@@ -105,7 +105,7 @@ class PeaceofmindApplicationTests {
 	// get appointment
 	@Test
 	public void getAnAppointment() throws Exception{
-		Appointment appointment = new Appointment(1L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, false, 0);
+		Appointment appointment = new Appointment(1L, ZonedDateTime.now( ZoneOffset.UTC ), ZonedDateTime.now( ZoneOffset.UTC ), 12L, 5L, null, false, 0);
 		
 		when(appointmentService.getAppointment(1L)).thenReturn(appointment);
 
@@ -123,8 +123,8 @@ class PeaceofmindApplicationTests {
 	@Test
 	public void testGetAllAppointments() throws Exception {
 		ZonedDateTime now = ZonedDateTime.now();
-		Appointment appointment1 = new Appointment(1L, now, now, 1L, 1L, false, 0);
-		Appointment appointment2 = new Appointment(2L, now, now, 2L, 2L, false, 0);
+		Appointment appointment1 = new Appointment(1L, now, now, 1L, 1L, null, false, 0);
+		Appointment appointment2 = new Appointment(2L, now, now, 2L, 2L, null, false, 0);
 		List<Appointment> appointments = Arrays.asList(appointment1, appointment2);
 
 		when(appointmentService.getAllAppointments()).thenReturn(appointments);
@@ -142,7 +142,7 @@ class PeaceofmindApplicationTests {
 	@Test
 	public void updateAppointment() throws Exception{
 		ZonedDateTime now = ZonedDateTime.now();
-		Appointment appointment = new Appointment(1L, now, now, 1L, 1L, false, 0);
+		Appointment appointment = new Appointment(1L, now, now, 1L, 1L, null, false, 0);
 
 		when(appointmentService.updateAppointment(appointment)).thenReturn("Appointment Updated !");
 		mvc.perform(MockMvcRequestBuilders
