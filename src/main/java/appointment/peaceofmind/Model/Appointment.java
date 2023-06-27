@@ -41,6 +41,9 @@ public class Appointment {
     @Nonnull
     private Long patientid;
 
+
+    private String meetingURL;
+
     private boolean confirmed;
 
     private Integer deleted;
