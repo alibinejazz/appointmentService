@@ -45,7 +45,7 @@ public class AppointmentService implements IAppointmentRepo  {
             toBeUpdated.setUpdated(ZonedDateTime.now());
             toBeUpdated.setAvailabilityId(appointment.getAvailabilityId());
             toBeUpdated.setConfirmed(appointment.isConfirmed());
-            toBeUpdate.setMeetingURL(appointment.getMeetingURL());
+            toBeUpdated.setMeetingURL(appointment.getMeetingURL());
             
             appointmentRepo.save(toBeUpdated);
             return "Appointment Updated !";
