@@ -120,5 +120,11 @@ public class AppointmentController {
         }
     }
 
+    //delete all appointments
+    @DeleteMapping("/deleteall")
+    public void deleteAllAppointments(){
+        appointmentService.deleteAllAppointments();
+    }
+
 
 }
