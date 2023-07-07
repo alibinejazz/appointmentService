@@ -67,7 +67,7 @@ public class AppointmentController {
             if (appointment != null) {
                 return ResponseEntity.ok(appointment);
             } else {
-                return ResponseEntity.notFound().build();
+                return ResponseEntity.ok(appointment);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,7 +106,7 @@ public class AppointmentController {
         if (!appointments.isEmpty()) {
             return ResponseEntity.ok(appointments);
         } else {
-            return ResponseEntity.notFound().build(); 
+            return ResponseEntity.ok(appointments); 
         }
     }
 
