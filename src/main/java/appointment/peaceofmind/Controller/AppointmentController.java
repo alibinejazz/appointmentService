@@ -54,6 +54,17 @@ public class AppointmentController {
         }
     }
 
+    @GetMapping(value = "") //for deg 
+    public ResponseEntity<List<Appointment>> getAllAppointmentsforDeg() {
+        try {
+            List<Appointment> appointments = appointmentService.getAllAppointments();
+            return ResponseEntity.ok().body(appointments);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     // -----------
     //getByDays
     // -----------
@@ -62,6 +73,22 @@ public class AppointmentController {
 
     @GetMapping(value="/get/{id}")
     public ResponseEntity<Appointment> getOneAppointment (@PathVariable Long id ) {
+         try {
+            Appointment appointment =  appointmentService.getAppointment(id);
+            if (appointment != null) {
+                return ResponseEntity.ok(appointment);
+            } else {
+                return ResponseEntity.ok(appointment);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+    }
+
+        @GetMapping(value="/{id}")      //for deg
+    public ResponseEntity<Appointment> getOneAppointmentforDeg (@PathVariable Long id ) {
          try {
             Appointment appointment =  appointmentService.getAppointment(id);
             if (appointment != null) {
