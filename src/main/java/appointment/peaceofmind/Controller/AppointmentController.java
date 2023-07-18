@@ -87,21 +87,21 @@ public class AppointmentController {
 
     }
 
-        @GetMapping(value="/{id}")      //for deg
-    public ResponseEntity<Appointment> getOneAppointmentforDeg (@PathVariable Long id ) {
-         try {
-            Appointment appointment =  appointmentService.getAppointment(id);
-            if (appointment != null) {
-                return ResponseEntity.ok(appointment);
-            } else {
-                return ResponseEntity.ok(appointment);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    //     @GetMapping(value="/{id}")      //for deg
+    // public ResponseEntity<Appointment> getOneAppointmentforDeg (@PathVariable Long id ) {
+    //      try {
+    //         Appointment appointment =  appointmentService.getAppointment(id);
+    //         if (appointment != null) {
+    //             return ResponseEntity.ok(appointment);
+    //         } else {
+    //             return ResponseEntity.ok(appointment);
+    //         }
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    //     }
 
-    }
+    // }
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<String> deleteOneAppointment(@PathVariable Long id) {
